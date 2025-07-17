@@ -2,7 +2,8 @@
 async function translateText() {
   const inputText = document.getElementById('inputText').value;
 
-  const res = await fetch('http://localhost:5000/translate', {
+
+  const res = await fetch('https://translatebackend.onrender.com/translate', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text: inputText })
@@ -35,7 +36,7 @@ function loadExample(category) {
 }
 
 async function getBreakdown(teluguText) {
-  const res = await fetch('http://localhost:5000/breakdown', {
+  const res = await fetch('https://translatebackend.onrender.com/breakdown', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({ text: teluguText })
@@ -89,7 +90,7 @@ function startLiveTranslation() {
     // Optional: filter out repeating partials
     if (!teluguText.trim()) return;
 
-    const res = await fetch('http://localhost:5000/translate-live', {
+    const res = await fetch('https://translatebackend.onrender.com/translate-live', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ text: teluguText })
