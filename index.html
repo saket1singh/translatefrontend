@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Hindi to Telugu Learner</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      font-family: 'Inter', 'Roboto', Arial, sans-serif;
+      background: linear-gradient(135deg, #f3eaff 0%, #e0c3fc 100%);
+      color: #222;
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: row;
+    }
+    .app-container {
+      max-width: 900px;
+      width: 100%;
+      margin: 32px auto 0 auto;
+      padding: 40px 32px 36px 32px;
+      background: rgba(255,255,255,0.98);
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(100,125,238,0.10);
+      backdrop-filter: blur(2px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      flex: 1;
+      justify-content: flex-start;
+    }
+    .sidebar-category {
+      height: 100vh;
+      min-width: 150px;
+      max-width: 180px;
+      background: linear-gradient(135deg, #e0c3fc 0%, #f3eaff 100%);
+      border-radius: 0 18px 18px 0;
+      box-shadow: 2px 0 12px rgba(100,125,238,0.08);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 24px;
+      padding: 24px 10px 24px 10px;
+      position: sticky;
+      top: 0;
+      transition: max-width 0.3s, min-width 0.3s;
+      overflow: hidden;
+    }
+    h1 {
+      text-align: center;
+      font-size: 2.2rem;
+      color: #7f53ac;
+      font-family: 'Inter', 'Roboto', Arial, sans-serif;
+      font-weight: 800;
+      letter-spacing: 1.5px;
+      margin-bottom: 28px;
+      text-shadow: 0 2px 8px rgba(100,125,238,0.10);
+    }
+    .category-buttons button, .input-actions button {
+      flex: 1;
+      background: linear-gradient(90deg, #7f53ac 0%, #647dee 100%);
+      border: none;
+      border-radius: 12px;
+      padding: 13px 0;
+      font-size: 1.13rem;
+      color: #fff;
+      font-family: 'Inter', 'Roboto', Arial, sans-serif;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      box-shadow: 0 2px 12px rgba(100,125,238,0.10);
+      transition: background 0.2s, color 0.2s, transform 0.1s;
+      cursor: pointer;
+      text-shadow: 0 1px 4px rgba(100,125,238,0.10);
+      width: 100%;
+    }
+    .category-buttons button:hover, .input-actions button:hover {
+      background: linear-gradient(90deg, #647dee 0%, #7f53ac 100%);
+      color: #f3eaff;
+      transform: translateY(-2px) scale(1.03);
+      box-shadow: 0 4px 18px rgba(100,125,238,0.18);
+    }
+    textarea {
+      width: 100%;
+      height: 90px;
+      margin-top: 10px;
+      border-radius: 10px;
+      border: 1px solid #e0e4ea;
+      padding: 12px;
+      font-size: 1rem;
+      background: #f7f8fa;
+      resize: vertical;
+      box-sizing: border-box;
+      margin-bottom: 10px;
+    }
+    .input-actions {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+    #micStatus {
+      display: none;
+      font-size: 1.1rem;
+      color: #e74c3c;
+      margin-top: 5px;
+      text-align: center;
+    }
+    #outputContainer {
+      background: #f3eaff;
+      padding: 18px 16px;
+      border-radius: 12px;
+      margin-top: 24px;
+      box-shadow: 0 2px 8px rgba(100,125,238,0.04);
+    }
+    #outputContainer h3 {
+      margin-top: 0;
+      color: #7f53ac;
+      font-size: 1.1rem;
+      margin-bottom: 8px;
+    }
+    #translatedText {
+      font-size: 1.25rem;
+      color: #647dee;
+      font-family: 'Inter', 'Roboto', Arial, sans-serif;
+      font-weight: 600;
+      letter-spacing: 0.2px;
+      text-shadow: 0 1px 4px rgba(100,125,238,0.07);
+    }
+    footer {
+      width: 100%;
+      background: linear-gradient(90deg,#e0c3fc 0%,#8ec5fc 100%);
+      padding: 16px 0 10px 0;
+      text-align: center;
+      border-radius: 18px 18px 0 0;
+      box-shadow: 0 -2px 12px rgba(100,125,238,0.08);
+      font-size: 1rem;
+      color: #7f53ac;
+      font-family: 'Inter','Roboto',Arial,sans-serif;
+      margin-top: auto;
+    }
+    @media (max-width: 900px) {
+      .app-container {
+        max-width: 98vw;
+        padding: 18px 4vw 18px 4vw;
+        margin: 18px auto 0 auto;
+        flex: 1;
+        justify-content: flex-start;
+      }
+      main {
+        padding: 0;
+        align-items: stretch;
+        min-height: 100vh;
+      }
+      aside.sidebar-category {
+        flex-direction: row;
+        min-width: unset;
+        max-width: unset;
+        width: 100vw;
+        height: auto;
+        position: static;
+        border-radius: 0 0 18px 18px;
+        box-shadow: none;
+        gap: 10px;
+        padding: 12px 0;
+        margin-bottom: 0;
+        transition: none;
+        overflow: visible;
+      }
+      #sidebarButtons {
+        flex-direction: row;
+        gap: 10px;
+        width: 100%;
+      }
+      #sidebarToggle {
+        margin-bottom: 0;
+        align-self: flex-start;
+      }
+      footer {
+        margin-top: auto;
+      }
+      body {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body style="display: flex; flex-direction: row; min-height: 100vh;">
+    <aside class="sidebar-category" id="sidebarMenu" style="height:100vh;min-width:60px;max-width:180px;background:linear-gradient(135deg,#e0c3fc 0%,#f3eaff 100%);border-radius:0 18px 18px 0;box-shadow:2px 0 12px rgba(100,125,238,0.08);display:flex;flex-direction:column;align-items:center;gap:24px;padding:24px 10px 24px 10px;position:sticky;top:0;transition:max-width 0.3s,min-width 0.3s;overflow:hidden;">
+      <button id="sidebarToggle" style="background:none;border:none;font-size:1.7rem;color:#7f53ac;cursor:pointer;margin-bottom:24px;align-self:flex-end;">☰</button>
+      <div id="sidebarButtons" style="width:100%;display:flex;flex-direction:column;align-items:center;gap:18px;">
+        <button onclick="loadExample('casual')" style="width:100%;margin-bottom:8px;">👋 Hello / Hi</button>
+        <button onclick="loadExample('office')" style="width:100%;margin-bottom:8px;">💼 Office</button>
+        <button onclick="loadExample('food')" style="width:100%;margin-bottom:8px;">🍲 Food</button>
+        <button onclick="loadExample('student')" style="width:100%;">🎓 Student</button>
+      </div>
+    </aside>
+    <main style="flex:1;display:flex;flex-direction:column;align-items:center;min-height:100vh;">
+      <header style="width:100%;background:linear-gradient(90deg,#7f53ac 0%,#647dee 100%);padding:18px 0 10px 0;border-radius:0 0 18px 18px;box-shadow:0 2px 12px rgba(100,125,238,0.10);margin-bottom:18px;position:sticky;top:0;z-index:2;">
+        <h1 style="margin:0;text-align:center;font-size:2.3rem;color:#fff;font-family:'Inter','Roboto',Arial,sans-serif;font-weight:800;letter-spacing:1.5px;text-shadow:0 2px 8px rgba(100,125,238,0.18);">Hindi to Telugu Learner</h1>
+        <p style="text-align:center;color:#f3eaff;font-size:1.08rem;margin-top:6px;letter-spacing:0.5px;">Bridge the Language Gap</p>
+      </header>
+      <div class="app-container" style="max-width:900px;width:100%;margin:32px auto 0 auto;padding:40px 32px 36px 32px;display:flex;flex-direction:column;align-items:center;">
+        <textarea id="inputText" rows="3" cols="40" placeholder="Type or speak in Hindi..." style="max-width:600px;width:100%;"></textarea>
+        <div class="input-actions" style="max-width:600px;width:100%;">
+          <button onclick="startVoiceInput()">🎤 Speak</button>
+          <button onclick="translateText()">Translate</button>
+        </div>
+        <div id="micStatus" style="max-width:600px;width:100%;">🔴 Listening...</div>
+        <div id="outputContainer" style="max-width:600px;width:100%;">
+          <h3>Telugu Translation:</h3>
+          <p id="translatedText"></p>
+        </div>
+        <div class="realtime-section" style="max-width:600px;width:100%;margin-top:32px;padding:24px 18px;background:#f7f8fa;border-radius:12px;box-shadow:0 2px 8px rgba(100,125,238,0.07);">
+          <button onclick="startLiveTranslation()" style="width:100%;margin-bottom:16px;">🎙️ Start Real-Time Translation</button>
+          <div id="liveOutput" style="min-height:32px;"></div>
+        </div>
+      </div>
+      <footer style="width:100%;background:linear-gradient(90deg,#e0c3fc 0%,#8ec5fc 100%);padding:16px 0 10px 0;text-align:center;border-radius:18px 18px 0 0;box-shadow:0 -2px 12px rgba(100,125,238,0.08);margin-top:auto;font-size:1rem;color:#7f53ac;font-family:'Inter','Roboto',Arial,sans-serif;">
+        <span>Made with ❤️ for language learners | &copy; 2025 Hindi-Telugu App</span>
+      </footer>
+    </main>
+    <script src="app.js"></script>
+    <script>
+      const sidebarMenu = document.getElementById('sidebarMenu');
+      const sidebarToggle = document.getElementById('sidebarToggle');
+      const sidebarButtons = document.getElementById('sidebarButtons');
+      let sidebarOpen = true;
+      sidebarToggle.onclick = function() {
+        sidebarOpen = !sidebarOpen;
+        if (sidebarOpen) {
+          sidebarMenu.style.maxWidth = '180px';
+          sidebarMenu.style.minWidth = '150px';
+          sidebarButtons.style.display = 'flex';
+          sidebarToggle.innerHTML = '☰';
+        } else {
+          sidebarMenu.style.maxWidth = '60px';
+          sidebarMenu.style.minWidth = '60px';
+          sidebarButtons.style.display = 'none';
+          sidebarToggle.innerHTML = '⮞';
+        }
+      };
+    </script>
+  </body>
+</html>
