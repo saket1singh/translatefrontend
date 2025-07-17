@@ -1,0 +1,14 @@
+[[redirects]]
+  from = "/translate-live"
+  to = "https://<YOUR-RENDER-BACKEND-URL>/translate-live"
+  status = 200
+
+[[redirects]]
+  from = "/translate"
+  to = "https://<YOUR-RENDER-BACKEND-URL>/translate"
+  status = 200
+
+[[redirects]]
+  from = "/breakdown"
+  to = "https://<YOUR-RENDER-BACKEND-URL>/breakdown"
+  status = 200
